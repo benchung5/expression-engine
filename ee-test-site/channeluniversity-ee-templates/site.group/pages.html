@@ -1,0 +1,13 @@
+{layout="site/.html-layout"}
+	<div id="content">
+		<div id="primary">
+			{exp:channel:entries channel="pages" limit="1"}
+			<h2>{title}</h2>
+			{pages_copy}
+			{/exp:channel:entries}
+		</div><!-- /end #primary -->
+		
+		{embed="site/.sidebar-generic"}
+	</div><!-- /end #content -->
+
+

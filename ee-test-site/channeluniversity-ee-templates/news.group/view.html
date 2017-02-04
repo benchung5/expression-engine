@@ -1,0 +1,101 @@
+{layout="site/.html-layout"}
+
+	{exp:channel:entries channel="news" limit="1" status="Homepage Featured|Homepage Secondary|open"}
+	{layout:set name="article_title"}{title}{/layout:set}
+	<div id="content">
+		<div id="primary">
+			<p class="photo"><img src="{news_image}" alt="{title}" width="700" height="250" /></p>
+
+			<div class="entry">
+				<h2>{title}</h2>
+
+				<div class="info">
+					<em>{entry_date format="%F %d, %Y"}</em>
+					<a href="#">{comment_total} Comment{if total_comments != 1}s{/if}</a>
+				</div><!-- /end .info -->
+	
+				<div class="content">
+					{news_body}
+				</div><!-- /end .content -->
+			</div><!-- /end .entry -->
+			{/exp:channel:entries}
+			<div class="comments">
+				<h3>There {if total_comments != 1}are{if:else}is{/if} {total_comments} comment{if total_comments != 1}s{/if} for this entry. <a href="#leave-a-comment">Leave a comment below &raquo;</a></h3>
+				<ol class="comments-list">
+					{exp:comment:entries channel="news"}
+					<li>
+						<div class="info">
+							<em><a href="#">{author}</a></em>
+							{comment_date format="%F %d, %Y"}
+						</div><!-- /end .info -->	
+						<div class="content">
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.</p>
+						</div>				
+					</li>
+					{/exp:comment:entries}
+				</ol><!-- /end ol.comments-list -->
+				<h3 id="leave-a-comment">Leave a comment. <em>*Required</em></h3>
+				{exp:comment:form channel="news" form_class="comment-form"}
+					<ul>
+						<li class="comment-name">
+							<div class="label">
+								<label for="form-name">Your Name*</label>
+							</div><!-- /end .label -->
+							<div class="input">
+								<input id="form-name" name="name" type="text" size="35" value="" />
+							</div><!-- /end .input -->
+						</li><!-- /end .comment-name -->
+	
+						<li class="comment-email">
+							<div class="label">
+								<label for="form-email">Email*</label>
+							</div><!-- /end .label -->
+							<div class="input">
+								<input id="form-email" name="email" type="text" size="35" value=""/>
+							</div><!-- /end .input -->
+						</li><!-- /end .comment-email -->
+	
+						<li class="comment-website">
+							<div class="label">
+								<label for="form-website">Website</label>
+							</div><!-- /end .label -->
+							<div class="input">
+								<input id="form-website" name="website" type="text" size="35" value="" />
+							</div><!-- /end .input -->
+						</li><!-- /end .comment-website -->
+						
+						<li class="comment-content">
+							<div class="label">
+								<label for="form-content">Comment</label>
+							</div>
+							<div class="input">
+								<textarea id="form-content" name="comment" cols="40" rows="10" /></textarea>
+							</div>
+						</li>
+
+					</ul>
+					<input id="comment-submit" type="submit" value="Submit Comment" />
+				{/exp:comment:form}<!-- /end form.comment-form -->
+			</div><!-- /end .comments -->
+			<div class="related">
+				{exp:channel:entries channel="news" limit="1" status="Homepage Featured|Homepage Secondary|open"}
+				<h3>Related Entries</h3>
+				<ul>
+					{news_related status="Homepage Featured|Homepage Secondary|open"}
+					<li class="{news_related:switch='first|second|last'}">
+						<em>{entry_date format="%F %d, %Y"}</em>
+						<h4><a href="{news_related:title_permalink='news/view'}">{news_related:title}</a></h4>
+						<p>{news_related:news_excerpt}</p>
+					</li>
+					{/news_related}
+					
+				</ul>
+				{/exp:channel:entries}
+			</div><!-- /end .related -->
+		</div><!-- /end #primary -->
+		
+		{embed="site/.news-sidebar"}
+		
+	</div><!-- /end #content -->
+
+

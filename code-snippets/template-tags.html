@@ -1,0 +1,72 @@
+{exp:channel:entries channel="news" limit="4" status=“Homepage Secondary”}
+<li class=“{switch=‘first|second|last’}”>
+	{title}
+	{news_excerpt}
+	{news_body}
+</li>
+{/exp:channel:news}
+
+
+//layout template
+//seme kind of path you would use in a permalink tag
+put this at the top of your templates
+{layout="template_group/template_name"}
+
+//for ee to inject the specific template into the layout template
+{layout:contents}
+//(we maek it .html-layout - the . makes it hidden from navigating to it directly in the browser)
+
+{embed="template_group/template_name"}
+
+//dynmamic variables
+//used to pass variables to the layout tamplate from inner ones (like for meta tags in the head for example)
+//first pass it into the layout tag from the inner template that's using it
+{layout="template_group/template_name" variable_name="what-to-pass"}
+//but since the layout tag goes in at the top it can't access the dynamic channel entries so we do it inside those entries like so:
+{layout:set name="variable_name"}{title}{/layout}
+
+//then in the layout template you can access it like this:
+{layout:variable_name}
+
+//conditionals:
+//if there is anything after the root url, show the dash
+<title>{layout:article_title}{if segment_1} - {/if}Channel University</title>
+
+//categories
+//outputs a nested ul with a class of "categories"
+//because nested is selected, it will construct the nested ul and li elements
+{exp:channel:categories channel="news" style="nested" class="categories"}
+	<a href="{path='news/show'}">{category_name}</a>
+{/exp:channel:categories}
+
+//category heading
+//put this in the header of the category view template
+<h2>{exp:channel:category_heading channel="news"}{category_name}{/exp:channel:category_heading}</h2>
+
+//related categories
+<ul>
+	{exp:channel:entries channel="news" limit="3" related_categories_mode="yes" custom_fields="yes"
+	status="Homepage Featured|Homepage Secondary|open"}
+	<li class="{switch='first|second|last'}">
+		<em>{entry_date format="%F %d,%Y"}</em>
+		<h4><a href="{title_permalink='news/view}">{title}</a></h4>
+		<p>{news_excerpt}</p>
+	</li>
+	{/exp:channel:entries}
+</ul>
+
+//relationships
+//use the tag pair we create in our field group for 'relationships'
+//works the same as the above but just need to add a namespace infront of it, ex: news_related:...
+//only exception is news_excerpt which breaks if you add the namespace
+{exp:channel:entries channel="news" limit="1" status="Homepage Featured|Homepage Secondary|open"}
+<ul>
+	{news_related status="Homepage Featured|Homepage Secondary|open"}
+	<li class="{news_related:switch='first|second|last'}">
+		<em>{entry_date format="%F %d,%Y"}</em>
+		<h4><a href="{news_related:title_permalink='news/view}">{news_related:title}</a></h4>
+		<p>{news_excerpt}</p>
+	</li>
+	{/news_related}
+</ul>
+{/exp:channel:entries}

@@ -1,0 +1,49 @@
+
+
+Training Resources:
+
+creating menus:
+https://expressionengine.com/forums/topic/237299/tutorial-creating-client-friendly-dynamic-menus-in-expression-engine
+
+video tutorial:
+http://mijingo.com/
+http://www.creat-ee.com/
+
+​There is also an EE Slack channel (#eecms)​ the community of devs would be great to get involved with - they're super friendly and helpful. We also use Slack throughout the day here for internal communication.
+
+Add-on Marketplace:
+
+http://devot-ee.com/
+
+​​Some of the major EE add-on​ dev​elopers:
+
+http://eeharbor.com/
+Well​-​regarded addons and great support.
+
+http://www.solspace.com/
+We​'​ve used their ​Freeform and User add​-​ons quite a bit. We've also outsourced work to them.
+
+http://www.putyourlightson.net/
+http://www.causingeffect.com/software
+https://boldminded.com/
+https://www.hopstudios.com/software/
+
+http://www.devdemon.com/
+At one time these guys were the bee​'​s knees - their add​-​ons were very solid. Things went bad though when the owner of the company got hired as the chief digital strategist for the Trump election campaign (seriously). He basically abandoned Dev​Demon and the company started ignoring support requests which angered a lot of people in the EE community. 
+
+Aside f​ro​m their own add​-​ons Dev​Demon had also acquired Store, which was our go-to ecommerce module. Once Dev​Demon abandoned its customers though we made the switch to Cartthrob, which is the other major ecommerce module for EE. 
+
+Interestingly, it was just announced this week that Vector Media, the company behind Cartthrob, has acquired Dev​Demon and Store. Vector ​Media ​is a well-​respected company (great support too) ​and they now own both major EE ecommerce platforms. Cartthrob is a pretty robust and flexible piece of software and I know​ before this week's news​ Vector already had plans to put a bit more polish on its UI, documentation etc​.​ Store was solid too, and overall the "prettier" ​of the ​two so I'm anxious to see ​their plans for each.
+
+https://buzzingpixel.com/software
+As part of our move away from Dev​Demon we also started using Ansel for image handling and we've been pretty please​d​ with it.
+
+http://gotolow.com/
+This ​guy is very well-known - his add​-​ons are always rock-solid and well-documented.
+
+
+General News/Community Resources:
+
+http://ee-hub.com/
+http://eeinsider.com/
+http://director-ee.com/

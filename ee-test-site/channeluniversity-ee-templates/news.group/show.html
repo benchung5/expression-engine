@@ -1,0 +1,41 @@
+{layout="site/.html-layout"}
+
+	<div id="content">
+		<div id="primary">
+			<h2>{exp:channel:category_heading channel="news"}{category_name}
+				{layout:set name="article_title"}{category_name}{/layout:set}
+				{/exp:channel:category_heading}</h2>
+			<ol class="results">
+				{exp:channel:entries channel="news" status="Homepage Featured|Homepage Secondary|open"}
+			    <li>
+			    	<div class="date">{entry_date format="%F %d, %Y"}</div>
+			    	<div class="content">
+			    		<h3><a href="{title_permalink='news/view'}">{title}</a></h3>
+			    		<p>{news_excerpt} <a href="{title_permalink='news/view'}" class="continue">Continue reading &raquo;</a></p>
+			    	</div>
+			    </li>
+			    {/exp:channel:entries}
+			</ol><!-- /end ol.results -->
+		</div><!-- /end #primary -->
+		
+		<div id="additional">
+			<p class="feed-subscribe"><a href="#">Subscribe to Channel News</a></p>
+		
+			<div class="about">
+				<h2>About Channel University</h2>
+				<p class="last">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna. <a href="#">Learn more &raquo;</a></p>
+			</div><!-- /end .about -->
+		
+			<ul class="categories">
+				<li><a href="#">Lorem ipsum dolor</a>
+					<ul>
+						<li><a href="#">Testing Nested Item</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Nullam malesuada erat semper</a></li>
+				<li><a href="#">Ipsum dolor sit amet</a></li>
+				<li><a href="#">Sit amet consectetuer</a></li>
+				<li class="last"><a href="#">Nullam malesuada erat semper</a></li>
+			</ul><!-- /end ul.categories -->
+		</div><!-- /end #additional -->
+	</div><!-- /end #content -->

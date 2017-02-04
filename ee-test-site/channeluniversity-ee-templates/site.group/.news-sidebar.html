@@ -1,0 +1,12 @@
+		<div id="additional">
+			<p class="feed-subscribe"><a href="#">Subscribe to Channel News</a></p>
+		
+			<div class="about">
+				<h2>About Channel University</h2>
+				<p class="last">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna. <a href="#">Learn more &raquo;</a></p>
+			</div><!-- /end .about -->
+		
+			{exp:channel:categories channel="news" style="nested" class="categories"}
+				<a href="{path='news/show'}">{category_name}</a>
+			{/exp:channel:categories}
+		</div><!-- /end #additional -->

@@ -1,0 +1,133 @@
+{embed="includes/document_head"}
+
+<body id="www-clientURL-com" class="sect-internal type-results">
+
+<div id="page">
+
+{embed="includes/masthead"}
+
+	<div id="content">
+		<div id="primary">
+			<div class='advanced-search'>
+			<h2>Advanced Site Search</h2>
+			{exp:search:advanced_form result_page="search/results"}
+			<fieldset id="advanced-search"> 
+				<table cellpadding="4" cellspacing="6" border="0" width="100%">
+					<tr>
+						<td>
+							<fieldset class="advanced-search-options">
+							<legend>Keywords<br/></legend>
+
+							<input type="text" class="input" maxlength="100" size="40" name="keywords" id="keywords" />
+
+			<div class="default">
+			<select name="search_in">
+			<option value="titles" selected="selected">{lang:search_in_titles}</option>
+			<option value="entries">{lang:search_in_entries}</option>
+			<option value="everywhere" >{lang:search_everywhere}</option>
+			</select>
+			</div>
+
+			<div class="default">
+			<select name="where">
+			<option value="exact" selected="selected">{lang:exact_phrase_match}</option>
+			<option value="any">{lang:search_any_words}</option>
+			<option value="all" >{lang:search_all_words}</option>
+			<option value="word" >{lang:search_exact_word}</option>
+			</select>
+			</div>
+
+			</fieldset>
+
+			</td>
+			</tr>
+			</table>
+
+			<table cellpadding='4' cellspacing='6' border='0' width='100%'> 
+			<tr>
+			<td valign="top" width="50%">
+
+			<table cellpadding='0' cellspacing='0' border='0'>
+			<tr class="search-in">
+			<td valign="top">
+
+			<h5>{lang:channels}</h5>
+
+			<select id="channel_id" name='channel_id[]' class='multiselect' size='12' multiple='multiple' onchange='changemenu(this.selectedIndex);'>
+			{channel_names}
+			</select>
+
+			</td>
+			<td valign="top" width="16">&nbsp;</td>
+			<td valign="top">
+
+			<h5>{lang:categories}</h5>
+
+			<select name='cat_id[]' size='12' class='multiselect' multiple='multiple'>
+			<option value='all' selected="selected">{lang:any_category}</option>
+			</select>
+
+			</td>
+			</tr>
+			</table>
+
+			</td>
+			<td valign="top" width="50%">
+
+			<fieldset class="advanced-search-options">
+			<legend>{lang:search_entries_from}</legend>
+
+			<select name="date" style="width:150px">
+			<option value="0" selected="selected">{lang:any_date}</option>
+			<option value="1" >{lang:today_and}</option>
+			<option value="7" >{lang:this_week_and}</option>
+			<option value="30" >{lang:one_month_ago_and}</option>
+			<option value="90" >{lang:three_months_ago_and}</option>
+			<option value="180" >{lang:six_months_ago_and}</option>
+			<option value="365" >{lang:one_year_ago_and}</option>
+			</select>
+
+			<div class="default">
+			<input type='radio' name='date_order' value='newer' class='radio' checked="checked" />&nbsp;{lang:newer}
+			<input type='radio' name='date_order' value='older' class='radio' />&nbsp;{lang:older}
+			</div>
+
+			</fieldset>
+
+			<div class="default"><br /></div>
+
+			<fieldset class="advanced-search-options">
+			<legend>{lang:sort_results_by}</legend>
+
+			<select name="orderby">
+			<option value="date" >{lang:date}</option>
+			<option value="title" >{lang:title}</option>
+			<option value="most_comments" >{lang:most_comments}</option>
+			<option value="recent_comment" >{lang:recent_comment}</option>
+			</select>
+
+			<div>
+			<input type='radio' name='sort_order' class="radio" value='desc' checked="checked" /> <label for="sort_order">{lang:descending}</label>
+			<input type='radio' name='sort_order' class="radio" value='asc' /> {lang:ascending}
+			</div>
+
+			</fieldset>
+
+			</td>
+			</tr>
+			</table>
+
+			<input type='submit' value='Search' id="search-submit" />
+			</div>
+			{/exp:search:advanced_form}
+		</div><!-- /end #primary -->
+		
+{embed="includes/sidebar"}
+	</div><!-- /end #content -->
+
+{footer}
+
+</div><!-- /end #page -->
+
+</body>
+</html>

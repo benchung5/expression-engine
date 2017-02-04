@@ -1,0 +1,16 @@
+ee test site:
+—————————
+
+db:
+wpauto5_ee_test
+LMua0o**TqGL
+
+admin:
+ben@benchung.com
+benchung
+f0rm&aff3ct
+
+installation
+——————
+-instructions here:
+https://docs.expressionengine.com/latest/installation/installation.html

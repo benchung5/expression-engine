@@ -1,0 +1,45 @@
+{layout="site/.html-layout"}
+
+	<div id="content">
+		<div id="primary">
+			<div class="feat-stories">
+				{exp:channel:entries channel="news" limit="1" status="Homepage Featured"}
+				<div class="main">
+					<p class="photo"><a href="{title_permalink='news/view'}"><img src="{news_image:featured_home}" alt="Photo placeholder" width="460" height="250" /></a></p>
+					<div class="details">
+						<h2><a href="{title_permalink='news/view'}">{title}</a></h2>
+						<p>{news_excerpt}</p>
+						<p class="more"><a href="{title_permalink='news/view'}">Continue reading &raquo;</a></p>
+					</div><!-- .details -->
+				</div><!-- /end .main -->
+				{/exp:channel:entries}
+				<ul>
+				{exp:channel:entries channel="news" limit="3" status="Homepage Secondary"}
+					<li class="{switch='first|second|last'}">
+						<p class="img"><a href="{title_permalink='news/view'}"><img src="{news_image:secondary_thumb}" alt="Image placeholder" width="220" height="100" /></a></p>
+						<h2><a href="{title_permalink='news/view'}">{title}</a></h2>
+						<p>{news_excerpt}</p>
+					</li>
+				{/exp:channel:entries}
+				</ul>
+
+				<p class="view-all"><a href="#">View all news entries &raquo;</a></p>
+			</div><!-- /end .feat-stories -->
+			
+			<div class="testimonials">
+				<h2>Student testimonials</h2>
+				<ul>
+				{exp:channel:entries channel="testimonials" limit="3"}
+					<li class="{switch='first|second|last'}">
+						<p>&ldquo;{testimonial_copy}&rdquo;</p>
+						<em>&#8212;{title}</em>
+					</li>
+				{/exp:channel:entries}
+				</ul>
+				<p class="extra">To submit a testimonial, you can use our <a href="#">commment form</a> or email <a href="#">testimonials@channeluniversity.edu</a>. Testimonials may be edited for content, clarity and space constraints.</p>
+			</div><!-- /end .testimonials -->
+		</div><!-- /end #primary -->
+		
+		{embed="site/.sidebar-generic"}
+	</div><!-- /end #content -->
+
