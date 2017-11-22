@@ -6,9 +6,10 @@
 </li>
 {/exp:channel:entries}
 
-
-<!-- layout template
-seme kind of path you would use in a permalink tag -->
+<!-- ==========================================================================
+layout template
+========================================================================== -->
+<!-- seme kind of path you would use in a permalink tag -->
 <!-- put this at the top of your templates -->
 {layout="template_group/template_name"}
 
@@ -28,12 +29,28 @@ first pass it into the layout tag from the inner template that's using it -->
 <!-- then in the layout template you can access it like this: -->
 {layout:variable_name}
 
-<!-- conditionals:
-if there is anything after the root url, show the dash -->
-<title>{layout:article_title}{if segment_1} - {/if}Channel University</title>
+<!-- ==========================================================================
+sort order
+========================================================================== -->
 
-<!-- categories
-outputs a nested ul with a class of "categories"
+<!-- order by title in ascending alphabetical order -->
+{exp:channel:entries channel="face_athletes"  orderby="title" sort="asc"}
+
+<!-- order by date in decending order -->
+{exp:channel:entries channel="face_athletes"  orderby="date" sort="desc"}
+
+<!-- ==========================================================================
+search within channel while outputting entries
+========================================================================== -->
+
+<!-- search:filedname="whatever" -->
+<!-- can also have multiple searches and or conditions within them: -->
+{exp:channel:entries search:style="=ale" search:region="germany|belgium" search:rating="=3|4|5"}
+
+<!-- ==========================================================================
+categories
+========================================================================== -->
+<!-- outputs a nested ul with a class of "categories"
 because nested is selected, it will construct the nested ul and li elements -->
 {exp:channel:categories channel="news" style="nested" class="categories"}
 	<a href="{path='news/show'}">{category_name}</a>
@@ -55,8 +72,10 @@ put this in the header of the category view template -->
 	{/exp:channel:entries}
 </ul>
 
-<!-- relationships
-use the tag pair we create in our field group for 'relationships'
+<!-- ==========================================================================
+relationships
+========================================================================== -->
+<!-- use the tag pair we create in our field group for 'relationships'
 works the same as the above but just need to add a namespace infront of it, ex: news_related:...
 only exception is news_excerpt which breaks if you add the namespace -->
 {exp:channel:entries channel="news" limit="1" status="Homepage Featured|Homepage Secondary|open"}
@@ -71,8 +90,70 @@ only exception is news_excerpt which breaks if you add the namespace -->
 </ul>
 {/exp:channel:entries}
 
+<!-- ==========================================================================
+conditionals
+========================================================================== -->
+<!-- if there is anything after the root url, show the dash -->
+<title>{layout:article_title}{if segment_1} - {/if}Channel University</title>
+<!-- if else -->
+{if:elseif}
+<!-- and -->
+{if:else}
+
 <!-- conditionally show field if it has content -->
 {if your_custom_field_name != ""}
 	<!-- your stuff here -->
 {/if}
+
+<!-- if based on dropdown select field -->
+{if face-athletes-card-type == "normal"}
+<!-- ... -->
+{/if}
+
+
+{!-- operators --}
+{if member_id != '1' && member_group != "5" OR username == "Billy"} Hi! {/if}
+<!-- ==========================================================================
+images
+========================================================================== -->
+<!-- print out images in channel entries
+(using ee's native image manipulation ) -->
+{portfolio-image}
+{path}{filename}{extension} 
+{/portfolio-image}
+for your image manipulation:
+{portfolio-image}
+{path}_small/{filename}{extension} 
+{/portfolio-image}
+and 
+{portfolio-image}
+{path}_medium/{filename}{extension} 
+{/portfolio-image}
+
+<!-- ==========================================================================
+matrix
+========================================================================== -->
+<!-- print out matrix fields in template -->
+{my_matrix_field}
+    <h2>{speaker_name}</h2>
+    <img src="{speaker_photo}" alt="{speaker_name}"/>
+    <p>{speaker_description}</p>
+{/my_matrix_field}
+
+<!-- ==========================================================================
+entry from url
+========================================================================== -->
+<!-- The Template Groups name is “company” and the Template name is “employees”. Based on the information in the 3rd segment (in this case, “joe”) you can dynamically cause the “employees” template to change for each person. Here’s an example of a channel tag in which the URL title changes based on the 3rd segment: -->
+{exp:channel:entries url_title="{segment_3}"}
+  <h1>{title}</h1>
+  <p>{body}</p>
+{/exp:channel:entries}
+
+<!-- ==========================================================================
+common tags
+========================================================================== -->
+
+<!-- id: -->
+{entry_id}
+
 

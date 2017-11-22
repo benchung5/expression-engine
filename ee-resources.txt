@@ -47,3 +47,7 @@ General News/Community Resources:
 http://ee-hub.com/
 http://eeinsider.com/
 http://director-ee.com/
+
+
+ee-master-config - Focus Lab's Master Config setup for quick ExpressionEngine multi-environment support
+https://github.com/focuslabllc/ee-master-config
