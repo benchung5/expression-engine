@@ -1,4 +1,9 @@
-{exp:channel:entries channel="news" limit="4" status=“Homepage Secondary”}
+<!-- ==========================================================================
+channel entries
+========================================================================== -->
+<!-- **note that the limit is 100 by default if you don't put a limit -->
+
+{exp:channel:entries channel="news" limit="200" status=“Homepage Secondary”}
 <li class=“{switch=‘first|second|last’}”>
 	{title}
 	{news_excerpt}
@@ -17,7 +22,10 @@ layout template
 {layout:contents}
 <!-- (we maek it .html-layout - the . makes it hidden from navigating to it directly in the browser) -->
 
+<!-- using embeds -->
 {embed="template_group/template_name"}
+<!-- example: -->
+{embed="interactives/footer"}
 
 <!-- dynmamic variables
 used to pass variables to the layout tamplate from inner ones (like for meta tags in the head for example)
@@ -46,6 +54,12 @@ search within channel while outputting entries
 <!-- search:filedname="whatever" -->
 <!-- can also have multiple searches and or conditions within them: -->
 {exp:channel:entries search:style="=ale" search:region="germany|belgium" search:rating="=3|4|5"}
+
+<!-- ==========================================================================
+exclude a certain entry
+========================================================================== -->
+
+url_title="not {segment_3}"
 
 <!-- ==========================================================================
 categories
@@ -130,6 +144,16 @@ and
 {path}_medium/{filename}{extension} 
 {/portfolio-image}
 
+<!-- use with matrix as normal -->
+{my-matrix-field}
+	{portfolio-image1}
+		{path}{filename}{extension} 
+	{/portfolio-image1}
+	{portfolio-image2}
+		{path}{filename}{extension} 
+	{/portfolio-image2}
+{/my-matricx-field}
+
 <!-- ==========================================================================
 matrix
 ========================================================================== -->
@@ -150,10 +174,31 @@ entry from url
 {/exp:channel:entries}
 
 <!-- ==========================================================================
+if logged in
+========================================================================== -->
+
+<!-- if logged in -->
+{if logged_in_group_id == '3' OR logged_in_group_id == '8' OR logged_in_group_id == '7' OR logged_in_group_id == '6' OR logged_in_group_id == '1'}
+<!-- put stuff here -->
+{/if}
+<!-- note that if the user doesn't belong to any group it goes to 3 because they count as a guest -->
+
+{if logged_in}
+<div>logged in</div>
+{/if}
+
+{if logged_out}
+<div>logged out</div>
+{/if}
+
+<!-- ==========================================================================
 common tags
 ========================================================================== -->
 
 <!-- id: -->
 {entry_id}
+
+<!-- if last entry in loop -->
+{if count == total_results}
 
 
